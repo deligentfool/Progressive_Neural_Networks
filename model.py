@@ -21,7 +21,7 @@ class Pnn_Linear(nn.Module):
         if self.depth > 0:
             self.u.extend([nn.Linear(self.input_dim, self.output_dim) for _ in range(self.col)])
             self.v.extend([nn.Linear(self.input_dim, self.input_dim) for _ in range(self.col)])
-            self.alpha.extend([torch.FloatTensor([0.1]) for _ in range(self.col)])
+            self.alpha.extend([nn.Parameter(torch.FloatTensor([0.1])) for _ in range(self.col)])
 
     def forward(self, inputs):
         if type(inputs) is not list:

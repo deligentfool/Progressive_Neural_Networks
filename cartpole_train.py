@@ -20,7 +20,7 @@ if __name__ == '__main__':
     exploration = 200
     epsilon_init = 0.99
     epsilon_min = 0.2
-    decay = 0.999
+    decay = 0.998
     episode = 1000000
     render = False
     threshold_reward = 80
