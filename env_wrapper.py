@@ -8,4 +8,4 @@ class reverse_action_wrapper(gym.ActionWrapper):
 
 class reverse_observation_wrapper(gym.ObservationWrapper):
     def observation(self, observation):
-        return [- obs for obs in observation]
+        return list(reversed(observation))

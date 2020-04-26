@@ -13,17 +13,17 @@ from env_wrapper import reverse_action_wrapper, reverse_observation_wrapper
 
 if __name__ == '__main__':
     gamma = 0.99
-    learning_rate = 3e-4
+    learning_rate = 1e-3
     batch_size = 64
     soft_update_freq = 100
     capacity = 10000
     exploration = 200
     epsilon_init = 0.99
     epsilon_min = 0.2
-    decay = 0.998
+    decay = 0.999
     episode = 1000000
     render = False
-    threshold_reward = 70
+    threshold_reward = 80
 
     env_list = [reverse_observation_wrapper(gym.make('CartPole-v0')), gym.make('CartPole-v0'), reverse_action_wrapper(reverse_observation_wrapper(gym.make('CartPole-v0'))), reverse_action_wrapper(gym.make('CartPole-v0'))]
     observation_dim = env_list[0].observation_space.shape[0]
@@ -79,4 +79,4 @@ if __name__ == '__main__':
                 buffer.clear()
                 eval_net.freeze_columns()
                 break
-    torch.save(eval_net.state_dict(), './model.pkl')
+    torch.save(eval_net, './model.pkl')
